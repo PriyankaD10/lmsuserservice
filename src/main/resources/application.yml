@@ -1,0 +1,16 @@
+server:
+  port: 9013
+spring:
+  application:
+    name: User-service
+  datasource:
+    password: Pass@123
+    url: jdbc:mysql://lmsuser.mysql.database.azure.com:3306/lmsdb?useSSL=true&requireSSL=false
+    username: saadmin@lmsuser
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+    show-sql: true
