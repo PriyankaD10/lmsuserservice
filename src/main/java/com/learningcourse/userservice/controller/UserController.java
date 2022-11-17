@@ -20,7 +20,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 @RestController
 @RequestMapping("/users")
 @Slf4j
-@CrossOrigin(origins = "http://localhost:3000", allowedHeaders = "*")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class UserController {
     @Autowired
     private UserService userService;
@@ -42,8 +42,8 @@ public class UserController {
     }
 
     @RequestMapping(value = "/exists/{username}",method = RequestMethod.GET)
-    public Boolean isUserExists(@PathVariable("username") String username){
-        Boolean isExists = false;
+    public boolean isUserExists(@PathVariable("username") String username){
+        boolean isExists = false;
         User newUser =new User();
         newUser.setUsername(username);
         User user  = userService.getUser(newUser);
@@ -56,7 +56,7 @@ public class UserController {
     @RequestMapping(value = "/login",method = RequestMethod.POST)
     public HashMap<String,Object> login(@RequestBody User user){
         ResponseEntity<HashMap<String,Object>> responseEntity = null;
-        HashMap<String,Object> data = new HashMap<String,Object>();
+        HashMap<String,Object> data = new HashMap<>();
         User userRes =userService.getUser(user);
        // HttpHeaders responseHeaders = new HttpHeaders();
         if(userRes!=null) {
