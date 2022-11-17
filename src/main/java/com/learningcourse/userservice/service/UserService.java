@@ -39,7 +39,7 @@ public class UserService {
     public List<Course> viewAllCourses(){
         List<Course> availableCourses = new ArrayList<Course>();
         try {
-            Course[] courses = restTemplate.getForObject("http://localhost:9012/courses/getall", Course[].class);
+            Course[] courses = restTemplate.getForObject("https://lmscourse.azurewebsites.net/courses/getall", Course[].class);
             if(courses!=null){
                 availableCourses = Arrays.asList(courses);
             }
